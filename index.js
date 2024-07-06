@@ -5,12 +5,20 @@ const DB = require('./database');
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
+
+require('dotenv').config();
+
+const frontUrl = process.env.REACT_URL;
+// const abc = process.env.ABC;
+
+console.log(frontUrl);
+
 const corsOptions = {
-    origin: 'http://localhost:3000',//(https://your-client-app.com)
+    origin: `${frontUrl}`,//(https://your-client-app.com)
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-
+console.log
 app.use('/',userRoute);//user route
 app.use('/admin',adminRoute);
 
